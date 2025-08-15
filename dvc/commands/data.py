@@ -111,6 +111,7 @@ class CmdDataStatus(CmdBase):
                 targets=self.args.targets,
                 granular=self.args.granular,
                 untracked_files=self.args.untracked_files,
+                remote=self.args.remote,
                 not_in_remote=self.args.not_in_remote,
                 remote_refresh=self.args.remote_refresh,
             )
@@ -187,6 +188,12 @@ def add_parser(subparsers, parent_parser):
         action="store_true",
         default=False,
         help="Show files not in remote.",
+    )
+    data_status_parser.add_argument(
+        "-r",
+        "--remote",
+        help="Remote storage to compare local cache to",
+        metavar="<name>",
     )
     data_status_parser.add_argument(
         "--no-remote-refresh",
